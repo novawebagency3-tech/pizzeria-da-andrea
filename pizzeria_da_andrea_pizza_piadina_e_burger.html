@@ -1,0 +1,2111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; frame-src https://www.google.com;">
+    <title>Pizzeria Da Andrea — Pizza, Piadina Sfogliata & Burger a Villanova</title>
+    <meta name="description" content="Pizzeria Da Andrea a Villanova di Colli al Metauro (PU): pizza al piatto e in teglia, piadina sfogliata fatta in casa e maxi burger da 500 gr. Saletta ed asporto.">
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM & PALETTE (FORNO A LEGNA & ARTIGIANATO)
+           ========================================================================== */
+        :root {
+            --bg-farina: #FAF9F6;
+            --bg-impasto: #F2ECE4;
+            --bg-nero: #141414;
+            --bg-nero-card: #1E1E1E;
+            --text-dark: #141414;
+            --text-muted: #525252;
+            --text-light: #FAF9F6;
+            --rosso-forno: #DC2626;
+            --rosso-hover: #B91C1C;
+            --oro-crosta: #D97706;
+            --oro-hover: #B45309;
+            --border-light: #E5E0D8;
+            --border-dark: #2A2A2A;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 8px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 12px 24px -4px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-farina);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ==========================================================================
+           2. REUSABLE BUTTONS & BADGES
+           ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--rosso-forno);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--rosso-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-accent {
+            background-color: var(--oro-crosta);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-accent:hover {
+            background-color: var(--oro-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--rosso-forno);
+            color: var(--rosso-forno);
+            background-color: rgba(220, 38, 38, 0.04);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #FFFFFF;
+            width: 100%;
+            padding: 1.05rem;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20BA5A;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .badge-rosso {
+            background-color: rgba(220, 38, 38, 0.1);
+            color: var(--rosso-forno);
+            border: 1px solid rgba(220, 38, 38, 0.25);
+        }
+
+        .badge-oro {
+            background-color: rgba(217, 119, 6, 0.12);
+            color: var(--oro-crosta);
+            border: 1px solid rgba(217, 119, 6, 0.25);
+        }
+
+        .section-padding {
+            padding: 4.5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--text-dark);
+            margin: 0.75rem 0;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .icon-svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* ==========================================================================
+           3. HEADER & ANNOUNCEMENT BAR
+           ========================================================================== */
+        .announcement-bar {
+            background-color: var(--bg-nero);
+            color: var(--text-light);
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            padding: 0.55rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .announcement-bar strong {
+            color: var(--oro-crosta);
+        }
+
+        header {
+            background-color: var(--bg-farina);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.25rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-symbol {
+            width: 44px;
+            height: 44px;
+            background-color: var(--rosso-forno);
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-weight: 800;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .brand-subtitle {
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rosso-forno);
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--rosso-forno);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Mobile Overlay */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 82%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: var(--bg-farina);
+            z-index: 1000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+            transition: right 0.3s ease;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding: 3.5rem 0 4.5rem 0;
+            background: linear-gradient(180deg, var(--bg-farina) 0%, var(--bg-impasto) 100%);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background-color: var(--bg-nero);
+            aspect-ratio: 4 / 3;
+            border: 3px solid #FFFFFF;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+
+        .hero-image-badge {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            background: rgba(20, 20, 20, 0.92);
+            backdrop-filter: blur(8px);
+            color: var(--text-light);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .img-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1E1E1E 0%, #141414 100%);
+            color: var(--oro-crosta);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           5. GALLERIA FOTOGRAFICA REALE (#galleria)
+           ========================================================================== */
+        .gallery-section {
+            background-color: var(--bg-farina);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background-color: #FFFFFF;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-img-container {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background-color: var(--bg-nero);
+        }
+
+        .gallery-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover .gallery-img-container img {
+            transform: scale(1.05);
+        }
+
+        .gallery-zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(20, 20, 20, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: #FFFFFF;
+        }
+
+        .gallery-card:hover .gallery-zoom-overlay {
+            opacity: 1;
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .gallery-content h4 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-content p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(20, 20, 20, 0.93);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 960px;
+            width: 100%;
+            background-color: var(--bg-farina);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: #FFF;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .lightbox-media {
+            width: 100%;
+            max-height: 65vh;
+            background: var(--bg-nero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-media img {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+        }
+
+        .lightbox-info {
+            padding: 1.5rem;
+        }
+
+        /* ==========================================================================
+           6. MENÙ INTERATTIVO E FILTRI (#menu)
+           ========================================================================== */
+        .menu-section {
+            background-color: var(--bg-impasto);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            padding: 0.65rem 1.25rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--rosso-forno);
+            color: var(--rosso-forno);
+        }
+
+        .filter-btn.active {
+            background-color: var(--rosso-forno);
+            color: #FFFFFF;
+            border-color: var(--rosso-forno);
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .menu-item {
+            background-color: #FFFFFF;
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .menu-item-title {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .menu-item-price {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--rosso-forno);
+            white-space: nowrap;
+        }
+
+        .menu-item-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .menu-note-box {
+            margin-top: 2rem;
+            background-color: #FFFFFF;
+            border-left: 4px solid var(--oro-crosta);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        /* ==========================================================================
+           7. CONFIGURATORE ORDINE WHATSAPP (#prenota)
+           ========================================================================== */
+        .booking-section {
+            background-color: var(--bg-farina);
+        }
+
+        .booking-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            padding: 2.5rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .form-step {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1.5rem;
+        }
+
+        .form-step:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .step-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background-color: var(--rosso-forno);
+            color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .service-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .service-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .service-option label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background-color: var(--bg-farina);
+        }
+
+        .service-option input[type="radio"]:checked + label {
+            border-color: var(--rosso-forno);
+            background-color: rgba(220, 38, 38, 0.04);
+            color: var(--rosso-forno);
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--rosso-forno);
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .gdpr-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .gdpr-checkbox input {
+            margin-top: 3px;
+            accent-color: var(--rosso-forno);
+        }
+
+        /* ==========================================================================
+           8. ORARI, INFO & FOOTER
+           ========================================================================== */
+        .info-section {
+            background-color: var(--bg-nero);
+            color: var(--text-light);
+            padding: 4.5rem 0 3rem 0;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-dark);
+            font-size: 0.95rem;
+        }
+
+        .hours-row.closed {
+            color: #9CA3AF;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .service-badge {
+            background-color: var(--bg-nero-card);
+            border: 1px solid var(--border-dark);
+            padding: 0.75rem 0.9rem;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: #E5E5E5;
+        }
+
+        .service-badge .icon-svg {
+            color: var(--oro-crosta);
+            flex-shrink: 0;
+        }
+
+        .map-wrapper {
+            background-color: var(--bg-nero-card);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-placeholder p {
+            color: #A3A3A3;
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: #0A0A0A;
+            color: #A3A3A3;
+            padding: 2.5rem 0 1.5rem 0;
+            border-top: 1px solid #1E1E1E;
+            font-size: 0.85rem;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1E1E1E;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .footer-links a {
+            color: #A3A3A3;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        /* Modal Privacy */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-body {
+            background-color: var(--bg-farina);
+            color: var(--text-dark);
+            max-width: 650px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        /* ==========================================================================
+           9. RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .service-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .badges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA AVVISI -->
+    <div class="announcement-bar">
+        <span>📍 Via Ponte Metauro 107, Villanova — <strong>Aperti Mar–Dom 16:00 – 21:00 (Lunedì Chiuso)</strong></span>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="brand-logo" aria-label="Pizzeria Da Andrea Home">
+                <div class="brand-symbol">A</div>
+                <div class="brand-text">
+                    <span class="brand-title">PIZZERIA DA ANDREA</span>
+                    <span class="brand-subtitle">PIZZA · PIADINA SFOGLIATA · BURGER</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#menu">Menù & Prezzi</a></li>
+                    <li><a href="#galleria">Le Nostre Pizze</a></li>
+                    <li><a href="#orari">Orari & Info</a></li>
+                    <li><a href="#prenota" class="btn btn-primary" style="padding: 0.55rem 1.25rem;">Ordina Ora</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" id="openMobileNav" aria-label="Apri menu">
+                <svg class="icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <div class="brand-logo">
+                    <div class="brand-symbol">A</div>
+                    <div class="brand-text">
+                        <span class="brand-title" style="font-size: 1.15rem;">DA ANDREA</span>
+                        <span class="brand-subtitle">VILLANOVA</span>
+                    </div>
+                </div>
+                <button id="closeMobileNav" style="background: none; border: none; font-size: 1.6rem; cursor: pointer;">&times;</button>
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.25rem;">
+                <li><a href="#menu" class="mobile-link" style="font-size: 1.1rem; font-weight: 700;">Menù & Prezzi</a></li>
+                <li><a href="#galleria" class="mobile-link" style="font-size: 1.1rem; font-weight: 700;">Le Nostre Pizze</a></li>
+                <li><a href="#orari" class="mobile-link" style="font-size: 1.1rem; font-weight: 700;">Orari & Info</a></li>
+            </ul>
+        </div>
+        <div>
+            <a href="#prenota" class="btn btn-primary mobile-link" style="width: 100%; margin-bottom: 0.75rem;">Ordina su WhatsApp</a>
+            <a href="tel:+393341930118" class="btn btn-outline" style="width: 100%;">Chiama 334 193 0118</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="hero-eyebrow">
+                        <span class="badge badge-rosso">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                            QUALITÀ & QUALITÀ ARTIGIANALE DA ANDREA
+                        </span>
+                    </div>
+                    <h1>Pizzeria Da Andrea — Pizza al piatto e in teglia, piadina sfogliata fatta in casa e hamburger.</h1>
+                    <p class="hero-subtitle">
+                        Tutto preparato artigianalmente da noi: dalla pizza sottile al piatto ai tranci ricchi in teglia, dalla nostra piadina sfogliata fino agli hamburger da 500 gr. Da gustare nella saletta interna o d'asporto.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#menu" class="btn btn-primary">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            Sfoglia il Menù Completo con Prezzi
+                        </a>
+                        <a href="#prenota" class="btn btn-accent">Ordina Asporto su WhatsApp</a>
+                        <a href="tel:+393341930118" class="btn btn-outline" title="Chiama Pizzeria Da Andrea">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            334 193 0118
+                        </a>
+                    </div>
+                    <div class="hero-meta">
+                        <div>📍 Via Ponte Metauro 107, Villanova (Colli al Metauro)</div>
+                        <div>🕒 Martedì – Domenica 16:00 – 21:00</div>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper">
+                    <img src="img/pizza-teglia.jpg?v=1" alt="Pizza in teglia farcita appena sfornata Pizzeria Da Andrea Villanova" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-fallback" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width: 56px; height: 56px; margin-bottom: 0.75rem;"><path d="M12 2L2 22h20L12 2z"></path></svg>
+                        <h3 class="font-serif" style="color: #FFF; font-size: 1.25rem;">PIZZERIA DA ANDREA</h3>
+                        <p style="font-size: 0.85rem; color: var(--border-light); margin-top: 0.3rem;">Pizza in Teglia Farcita al Momento</p>
+                    </div>
+                    <div class="hero-image-badge">
+                        <svg class="icon-svg" style="color: var(--oro-crosta); width: 22px; height: 22px;" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700;">Specialità in Teglia & Al Piatto</div>
+                            <div style="font-size: 0.72rem; color: #A3A3A3;">Ingredienti scelti e impasti fragranti</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERIA FOTOGRAFICA REALE (#galleria) -->
+        <section id="galleria" class="section-padding gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge badge-rosso">LE NOSTRE CREAZIONI</span>
+                    <h2>Pizze Appena Sfornate</h2>
+                    <p>Scopri l'aspetto invitante e la cottura perfetta delle nostre pizze in teglia e specialità al forno.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- FOTO 1 -->
+                    <div class="gallery-card" onclick="openLightbox('img/pizza-teglia.jpg?v=1', 'Pizza in Teglia Farcita al Momento', 'Impasto fragrante con ingredienti generosi: peperoni, gorgonzola, salame piccante, crudo, funghi e noci.')">
+                        <div class="gallery-img-container">
+                            <img src="img/pizza-teglia.jpg?v=1" alt="Pizza in Teglia Farcita Pizzeria Da Andrea" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback" style="display: none;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 22h20L12 2z"></path></svg>
+                                <span>Pizza in Teglia Farcita</span>
+                            </div>
+                            <div class="gallery-zoom-overlay">
+                                <svg class="icon-svg" style="width: 32px; height: 32px;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h4>Pizza in Teglia Farcita al Momento</h4>
+                            <p>Impasto fragrante ricchissimo di farcitura: peperoni dolci, gorgonzola cremoso, salame piccante, prosciutto crudo, funghi e noci croccanti.</p>
+                        </div>
+                    </div>
+
+                    <!-- FOTO 2 -->
+                    <div class="gallery-card" onclick="openLightbox('img/pizza-graten.jpg?v=1', 'Specialità Graten al Forno', 'Melanzane, zucchine, pendolini, funghi freschi e una deliziosa gratinatura dorata al forno.')">
+                        <div class="gallery-img-container">
+                            <img src="img/pizza-graten.jpg?v=1" alt="Pizza Graten al forno Pizzeria Da Andrea" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="img-fallback" style="display: none;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 22h20L12 2z"></path></svg>
+                                <span>Specialità Graten al Forno</span>
+                            </div>
+                            <div class="gallery-zoom-overlay">
+                                <svg class="icon-svg" style="width: 32px; height: 32px;" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <h4>Specialità Graten al Forno</h4>
+                            <p>Melanzane, zucchine tagliate fini, pomodorini pendolini, funghi e una dorata gratinatura di pane profumato al forno.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX MODAL -->
+        <div class="lightbox-modal" id="lightboxModal">
+            <div class="lightbox-content">
+                <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+                <div class="lightbox-media" id="lightboxMedia"></div>
+                <div class="lightbox-info">
+                    <h3 id="lightboxTitle" class="font-serif" style="margin-bottom: 0.5rem; font-size: 1.35rem;"></h3>
+                    <p id="lightboxDesc" style="color: var(--text-muted); font-size: 0.95rem;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENÙ COMPLETO REALE CON FILTRI (#menu) -->
+        <section id="menu" class="section-padding menu-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge badge-oro">LISTINO UFFICIALE</span>
+                    <h2>Il Nostro Menù Completo</h2>
+                    <p>Filtra le categorie per scoprire le nostre pizze al piatto, le piadine sfogliate di nostra produzione e i ricchi hamburger.</p>
+                </div>
+
+                <!-- FILTRI CATEGORIA -->
+                <div class="menu-filters">
+                    <button class="filter-btn active" onclick="filterMenu('all', this)">Tutti i Piatti</button>
+                    <button class="filter-btn" onclick="filterMenu('classiche', this)">Pizze Classiche</button>
+                    <button class="filter-btn" onclick="filterMenu('speciali', this)">Pizze Speciali</button>
+                    <button class="filter-btn" onclick="filterMenu('piadina', this)">Piadina Sfogliata</button>
+                    <button class="filter-btn" onclick="filterMenu('burger', this)">Hamburger 500 gr.</button>
+                </div>
+
+                <!-- GRIGLIA ELEMENTI MENU -->
+                <div class="menu-grid" id="menuGrid">
+                    
+                    <!-- PIZZE CLASSICHE -->
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Margherita</span>
+                            <span class="menu-item-price">€ 5,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Ciclista</span>
+                            <span class="menu-item-price">€ 5,00</span>
+                        </div>
+                        <div class="menu-item-desc">Olio, sale, rosmarino</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Marinara</span>
+                            <span class="menu-item-price">€ 5,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, aglio, prezzemolo</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Salsiccia</span>
+                            <span class="menu-item-price">€ 6,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Patatine</span>
+                            <span class="menu-item-price">€ 6,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, patatine fritte</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Würstel</span>
+                            <span class="menu-item-price">€ 6,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, würstel</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Rossini</span>
+                            <span class="menu-item-price">€ 6,50</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, uovo sodo, maionese</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Diavola</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salame piccante</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Boscaiola</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia, funghi</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Napoli</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, acciughe, capperi</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Tonno e Cipolla</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, tonno, cipolla</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Prosciutto Crudo</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, prosciutto crudo</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Bufalina</span>
+                            <span class="menu-item-price">€ 7,50</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella di bufala campana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">4 Stagioni</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia, carciofi, prosciutto cotto, funghi</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Capricciosa</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia, carciofi, funghi, olive</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">4 Formaggi</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, grana, scamorza, gorgonzola, stracchino</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Ortolana</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, melanzane, zucchine, pendolini</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Parmigiana</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, melanzane, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Gamberi e Zucchine</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, gamberi, zucchine</div>
+                    </div>
+
+                    <div class="menu-item" data-category="classiche">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Frutti di Mare</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, pesce misto</div>
+                    </div>
+
+                    <!-- PIZZE SPECIALI -->
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Occhio di Bue</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, uovo, salsiccia, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Carbonara</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, uovo, pancetta</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Siciliana</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, tonno, cipolla, olive</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Popeye</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Biancaneve, erba cotta, salsiccia, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">4 Maiali</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia, würstel, prosciutto cotto, diavola</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">A Modo Mio</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, speck, rucola, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Mari e Monti</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, gamberi, zucchine, salsiccia, porcini</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Crudaiola</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, prosciutto crudo, rucola, pendolini, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Golosa</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, diavola, salsiccia, cipolla, peperoni</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Graten</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, melanzane, zucchine, pendolini, pangrattato gratinato</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Jonny</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Biancaneve, salsiccia, funghi, guanciale</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Tricolore</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Biancaneve, mozzarella di bufala, rucola, pomodoro a fette</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Contadina</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Biancaneve, salsiccia, prosciutto cotto, patate lesse</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Catalana</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, gamberi, cipolla, pendolini</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Amatriciana</span>
+                            <span class="menu-item-price">€ 10,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, cipolla, pancetta, grana</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Tirolese</span>
+                            <span class="menu-item-price">€ 10,00</span>
+                        </div>
+                        <div class="menu-item-desc">Biancaneve, speck, radicchio, noci, gorgonzola</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Sfiziosa</span>
+                            <span class="menu-item-price">€ 10,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, gamberi, insalata, pendolini, salsa rosa</div>
+                    </div>
+
+                    <div class="menu-item" data-category="speciali">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Trinità</span>
+                            <span class="menu-item-price">€ 10,00</span>
+                        </div>
+                        <div class="menu-item-desc">Pomodoro, mozzarella, salsiccia, cipolla, fagioli, pancetta</div>
+                    </div>
+
+                    <!-- PIADINA SFOGLIATA -->
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Piada Vuota</span>
+                            <span class="menu-item-price">€ 1,50</span>
+                        </div>
+                        <div class="menu-item-desc">La nostra piadina sfogliata artigianale calda</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Prosciutto Crudo</span>
+                            <span class="menu-item-price">€ 5,00</span>
+                        </div>
+                        <div class="menu-item-desc">Prosciutto crudo di prima scelta</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Crudo e Mozzarella</span>
+                            <span class="menu-item-price">€ 6,00</span>
+                        </div>
+                        <div class="menu-item-desc">Prosciutto crudo e mozzarella filante</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Stracchino e Rucola</span>
+                            <span class="menu-item-price">€ 6,00</span>
+                        </div>
+                        <div class="menu-item-desc">Stracchino fresco e rucola</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Cotto e Mozzarella</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Prosciutto cotto e mozzarella</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Salsiccia ed Erba Cotta</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Salsiccia rosolata ed erba cotta di campagna</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Salsiccia e Cipolla</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Salsiccia saporita e cipolla</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Tonno, Pomodoro e Insalata</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Tonno, pomodoro fresco e insalata</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Cotto, Stracchino e Rucola</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Prosciutto cotto, stracchino e rucola fresca</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Crudo, Stracchino e Rucola</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Prosciutto crudo, stracchino e rucola</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Salsiccia, Cipolla e Pancetta</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Salsiccia, cipolla e pancetta croccante</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Gamberi, Insalata, Cipolla e Pendolini</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Gamberi, insalata fresca, cipolla e pomodorini pendolini</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Piada Burger / CheeseBurger</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Specialità piada farcita con burger e formaggio</div>
+                    </div>
+
+                    <div class="menu-item" data-category="piadina">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Piada BaconBurger / Diabolica</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Burger, bacon croccante o salame piccante in piada sfogliata</div>
+                    </div>
+
+                    <!-- HAMBURGER 500 GR -->
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Hamburger Classico (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 7,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, pomodoro fresco, insalata</div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Cheese Burger (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, pomodoro, insalata, mozzarella filante</div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Bacon Burger (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, pomodoro, insalata, bacon croccante</div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Sexy Burger (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 8,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, pomodoro, rucola, cipolla, bacon, salsa rosa</div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Total Burger (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, pomodoro, insalata, bacon, cipolla, patatine fritte, salame</div>
+                    </div>
+
+                    <div class="menu-item" data-category="burger">
+                        <div class="menu-item-header">
+                            <span class="menu-item-title">Chill Burger (500 gr. totale)</span>
+                            <span class="menu-item-price">€ 9,00</span>
+                        </div>
+                        <div class="menu-item-desc">Maxi hamburger, salame piccante, cipolla, pancetta croccante</div>
+                    </div>
+
+                </div>
+
+                <div class="menu-note-box">
+                    <strong>📌 Garanzia d'Artigianalità:</strong> Le nostre piadine sfogliate sono interamente prodotte da noi nel rispetto della tradizione marchigiana (impasto con acqua, latte, strutto, farina, sale e pepe). Gli hamburger pesano 500 gr. complessivi compresi di ricca farcitura.
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURATORE ORDINE WHATSAPP (#prenota) -->
+        <section id="prenota" class="section-padding booking-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="badge badge-rosso">ORDINA O PRENOTA SUBITO</span>
+                    <h2>Ordine Asporto & Prenotazione Tavolo</h2>
+                    <p>Compila i dettagli: il tuo ordine verrà subito formattato ed inviato direttamente su WhatsApp per una conferma rapida.</p>
+                </div>
+
+                <div class="booking-card">
+                    <form class="booking-form" id="whatsappForm" onsubmit="sendWhatsApp(event)">
+                        
+                        <!-- STEP 1 -->
+                        <div class="form-step">
+                            <div class="step-label">
+                                <span class="step-number">1</span>
+                                <span>Scegli la modalità</span>
+                            </div>
+                            <div class="service-selector">
+                                <div class="service-option">
+                                    <input type="radio" id="srv_asporto" name="servizio" value="Ordine Asporto (Ritiro in sede)" checked>
+                                    <label for="srv_asporto">
+                                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                        Ordine d'Asporto (Ritiro in locale)
+                                    </label>
+                                </div>
+                                <div class="service-option">
+                                    <input type="radio" id="srv_tavolo" name="servizio" value="Prenotazione Tavolo (Saletta / Esterno)">
+                                    <label for="srv_tavolo">
+                                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                                        Tavolo in Saletta o All'Aperto
+                                    </label>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem;">
+                                ℹ️ <em>Servizio d'asporto e consumazione al tavolo in locale — Non effettuiamo consegna a domicilio.</em>
+                            </p>
+                        </div>
+
+                        <!-- STEP 2 -->
+                        <div class="form-step">
+                            <div class="step-label">
+                                <span class="step-number">2</span>
+                                <span>Data, Orario e Persone</span>
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="data_pref">Data (Martedì – Domenica) *</label>
+                                    <input type="date" id="data_pref" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ora_pref">Fascia Oraria Ritiro / Tavolo *</label>
+                                    <select id="ora_pref" class="form-control" required>
+                                        <option value="">Seleziona orario...</option>
+                                        <option value="16:00 - 17:30">16:00 – 17:30</option>
+                                        <option value="18:00 - 19:15">18:00 – 19:15</option>
+                                        <option value="19:30 - 20:15">19:30 – 20:15</option>
+                                        <option value="20:30 - 21:00">20:30 – 21:00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="num_persone">Numero Persone (se prenotazione tavolo) o numero pizze *</label>
+                                <input type="text" id="num_persone" class="form-control" placeholder="Es. 4 persone al tavolo / 3 pizze asporto" required>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3 -->
+                        <div class="form-step">
+                            <div class="step-label">
+                                <span class="step-number">3</span>
+                                <span>Dettagli e Lista Ordine</span>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label for="nome_cliente">Il tuo Nome e Cognome *</label>
+                                <input type="text" id="nome_cliente" class="form-control" placeholder="Es. Andrea Bianchi" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="note_ordine">Elenca qui le Pizze, Piadine o Hamburger desiderati</label>
+                                <textarea id="note_ordine" class="form-control" placeholder="Es. 1 Margherita, 1 Graten speciale, 1 Piada Crudo e Mozzarella, 1 Bacon Burger..."></textarea>
+                            </div>
+
+                            <div class="gdpr-checkbox">
+                                <input type="checkbox" id="gdpr" required>
+                                <label for="gdpr">Autorizzo l'invio di questi dati via WhatsApp per la gestione della richiesta nel rispetto del GDPR.</label>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
+                            <button type="submit" class="btn btn-whatsapp">
+                                <svg class="icon-svg" style="width: 22px; height: 22px;" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                Invia Ordine / Prenotazione su WhatsApp (334 193 0118)
+                            </button>
+                            <a href="tel:+393341930118" class="btn btn-outline" style="width: 100%;">
+                                Preferisci chiamare al telefono? Chiama 334 193 0118
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORARI, SERVIZI & MAPPA (#orari) -->
+        <section id="orari" class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    
+                    <!-- ORARI E SERVIZI -->
+                    <div>
+                        <div class="info-box" style="margin-bottom: 2.5rem;">
+                            <h3>
+                                <svg class="icon-svg" style="color: var(--oro-crosta);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                Orari di Apertura
+                            </h3>
+                            <ul class="hours-list">
+                                <li class="hours-row closed">
+                                    <span>Lunedì</span>
+                                    <strong>Chiuso</strong>
+                                </li>
+                                <li class="hours-row">
+                                    <span>Martedì – Domenica</span>
+                                    <strong>16:00 – 21:00</strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="info-box">
+                            <h3>
+                                <svg class="icon-svg" style="color: var(--oro-crosta);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Servizi Reali in Locale
+                            </h3>
+                            <div class="badges-grid">
+                                <div class="service-badge">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.05 10.9 2 11.2 2 11.5V16c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+                                    <span>Ampio Parcheggio Gratuito</span>
+                                </div>
+                                <div class="service-badge">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                                    <span>Saletta Interna & Esterno</span>
+                                </div>
+                                <div class="service-badge">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                    <span>Carte & Pagamenti NFC</span>
+                                </div>
+                                <div class="service-badge">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path></svg>
+                                    <span>Adatto ai Bambini</span>
+                                </div>
+                                <div class="service-badge" style="grid-column: span 2;">
+                                    <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"></circle><path d="M12 6v6m0 0l4 4m-4-4L8 16"></path></svg>
+                                    <span>Accessibile in sedia a rotelle (Ingresso & Parcheggio)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MAPPA CLICK TO LOAD -->
+                    <div>
+                        <div class="info-box" style="height: 100%; display: flex; flex-direction: column;">
+                            <h3>
+                                <svg class="icon-svg" style="color: var(--oro-crosta);" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                Dove Trovarci
+                            </h3>
+                            <p style="color: #A3A3A3; font-size: 0.95rem; margin-bottom: 1.25rem;">
+                                Via Ponte Metauro, 107 — 61036 Villanova (Colli al Metauro, PU)<br>
+                                Tel / WhatsApp: <strong>334 193 0118</strong>
+                            </p>
+                            
+                            <div class="map-wrapper" id="mapContainer">
+                                <div class="map-placeholder">
+                                    <svg class="icon-svg" style="width: 44px; height: 44px; color: var(--oro-crosta); margin-bottom: 0.75rem;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    <p>Clicca sul pulsante sottostante per caricare la mappa interattiva di Google Maps nel rispetto della tua privacy.</p>
+                                    <button onclick="loadGoogleMap()" class="btn btn-accent" style="font-size: 0.85rem; padding: 0.6rem 1.25rem;">
+                                        Carica Mappa Google
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="brand-logo">
+                    <div class="brand-symbol" style="width: 36px; height: 36px; font-size: 1.1rem;">A</div>
+                    <div class="brand-text">
+                        <span class="brand-title" style="color: #FFF; font-size: 1.15rem;">PIZZERIA DA ANDREA</span>
+                        <span class="brand-subtitle" style="color: var(--oro-crosta);">VILLANOVA DI COLLI AL METAURO</span>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://www.facebook.com/p/Pizzeria-da-andrea-100063688176585/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #3b5998; font-weight: 700; background: #FFF; padding: 0.4rem 0.9rem; border-radius: 99px; font-size: 0.85rem;">
+                        <svg class="icon-svg" style="fill: currentColor; stroke: none;" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        Seguici su Facebook (Pizzeria da andrea)
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    &copy; <span id="currentYear"></span> Pizzeria Da Andrea di Villanova (PU) — Via Ponte Metauro 107. Tutti i diritti riservati.
+                </div>
+                <div class="footer-links">
+                    <a href="javascript:void(0)" onclick="openPrivacyModal()">Informativa Privacy GDPR</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALE PRIVACY GDPR -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-body">
+            <h3 class="font-serif" style="margin-bottom: 1rem; font-size: 1.5rem;">Informativa sulla Privacy (GDPR)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                <strong>Pizzeria Da Andrea</strong> (Via Ponte Metauro 107, Villanova - Colli al Metauro) garantisce la massima riservatezza nell'uso dei dati personali degli utenti.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                <strong>1. Assenza di Cookie Traccianti:</strong> Questo sito web non utilizza alcun cookie di profilazione o tracciamento pubblicitario.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                <strong>2. Invio Ordini WhatsApp:</strong> I dati inseriti nel configuratore d'ordine (Nome, Orario, Pizze o Note) non vengono registrati su server esterni, ma servono unicamente a comporre il testo del messaggio diretto al numero WhatsApp del locale.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                <strong>3. Google Maps On-Demand:</strong> Il caricamento delle Mappe Google è subordinato all'azione volontaria dell'utente tramite un pulsante dedicato, al fine di evitare il trasferimento automatico di indirizzi IP prima del consenso.
+            </p>
+            <button onclick="closePrivacyModal()" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Chiudi Informativa</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Nav Toggle
+        const openMobileNavBtn = document.getElementById('openMobileNav');
+        const closeMobileNavBtn = document.getElementById('closeMobileNav');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileNav(state) {
+            if (state) {
+                mobileNav.classList.add('active');
+                mobileNavBackdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNav.classList.remove('active');
+                mobileNavBackdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        openMobileNavBtn.addEventListener('click', () => toggleMobileNav(true));
+        closeMobileNavBtn.addEventListener('click', () => toggleMobileNav(false));
+        mobileNavBackdrop.addEventListener('click', () => toggleMobileNav(false));
+        mobileLinks.forEach(link => link.addEventListener('click', () => toggleMobileNav(false)));
+
+        // Category Menu Filter Logic
+        function filterMenu(category, btnElement) {
+            const items = document.querySelectorAll('.menu-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // WhatsApp Direct Order Handler
+        function sendWhatsApp(event) {
+            event.preventDefault();
+
+            const servizio = document.querySelector('input[name="servizio"]:checked').value;
+            const data = document.getElementById('data_pref').value;
+            const ora = document.getElementById('ora_pref').value;
+            const persone = document.getElementById('num_persone').value;
+            const nome = document.getElementById('nome_cliente').value;
+            const note = document.getElementById('note_ordine').value;
+
+            let dataFormattata = data;
+            if (data) {
+                const parts = data.split('-');
+                if (parts.length === 3) {
+                    dataFormattata = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                }
+            }
+
+            let text = `Ciao *Pizzeria Da Andrea*, vorrei inviare una richiesta:\n\n`;
+            text += `📌 *Modalità:* ${servizio}\n`;
+            text += `👤 *Nome:* ${nome}\n`;
+            text += `📅 *Data:* ${dataFormattata}\n`;
+            text += `🕒 *Orario:* ${ora}\n`;
+            text += `👥 *Dettagli:* ${persone}\n`;
+
+            if (note.trim() !== "") {
+                text += `📝 *Pizze / Piadine / Burger ordinati:* ${note}\n`;
+            }
+
+            text += `\nAttendo vostra conferma. Grazie!`;
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/393341930118?text=${encodedText}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Lightbox Modal Logic
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxMedia = document.getElementById('lightboxMedia');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDesc = document.getElementById('lightboxDesc');
+
+        function openLightbox(imgSrc, title, description) {
+            lightboxTitle.textContent = title;
+            lightboxDesc.textContent = description;
+            
+            lightboxMedia.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = title;
+            img.onerror = function() {
+                lightboxMedia.innerHTML = `
+                    <div class="img-fallback" style="height: 320px; width: 100%;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:48px; height:48px;"><path d="M12 2L2 22h20L12 2z"></path></svg>
+                        <h4 class="font-serif" style="color: #FFF; font-size: 1.25rem; margin-top: 0.5rem;">${title}</h4>
+                    </div>
+                `;
+            };
+            lightboxMedia.appendChild(img);
+
+            lightboxModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
+
+        // Click-to-Load Google Maps
+        function loadGoogleMap() {
+            const container = document.getElementById('mapContainer');
+            container.innerHTML = `
+                <iframe 
+                    title="Mappa Pizzeria Da Andrea"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    loading="lazy" 
+                    allowfullscreen 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.428405102551!2d12.9248!3d43.7225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d1f7c32e5b8d7%3A0x6b4f70db2b2fa099!2sVia%20Ponte%20Metauro%2C%20107%2C%2061036%20Villanova%20PU!5e0!3m2!1sit!2sit!4v1700000000000">
+                </iframe>
+            `;
+        }
+
+        // Privacy Modal Logic
+        const privacyModal = document.getElementById('privacyModal');
+        function openPrivacyModal() {
+            privacyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePrivacyModal() {
+            privacyModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) closePrivacyModal();
+        });
+    </script>
+</body>
+</html>
